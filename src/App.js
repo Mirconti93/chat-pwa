@@ -1,23 +1,63 @@
 import logo from './logo.svg';
 import './App.css';
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import {
+  MainContainer,
+  ChatContainer,
+  MessageList,
+  Message,
+  MessageInput,
+  ConversationHeader,
+  Avatar,
+  StarButton,
+  VoiceCallButton,
+  InfoButton,
+  VideoCallButton
+} from "@chatscope/chat-ui-kit-react";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div style={{ position: "relative", height: "500px" }}>
+
+        <ConversationHeader>
+
+          <ConversationHeader.Back />
+
+          <Avatar src={logo} name="Emily" />
+
+          <ConversationHeader.Content userName="Emily" info="Active 10 mins ago" />                                   
+
+          <ConversationHeader.Actions>                                                                             
+
+            <StarButton title="Add to favourites" />
+
+            <VoiceCallButton title="Start voice call" />
+
+            <VideoCallButton title="Start video call" />
+
+            <InfoButton title="Show info" />
+
+          </ConversationHeader.Actions>
+
+          </ConversationHeader>
+          <MainContainer>  
+          <ChatContainer>
+            <MessageList>
+              <Message
+                model={{
+                  message: "Hello my friend",
+                  sentTime: "just now",
+                  sender: "Joe",
+                }}
+              />
+            </MessageList>
+            <MessageInput placeholder="Type message here" />
+          </ChatContainer>
+        </MainContainer>
+      </div>;
     </div>
   );
 }
